@@ -135,13 +135,12 @@ header {
         display: inline-block;
         font-size: var(--text_heading_1);
         font-weight: 600;
-        color: var(--text_paragraph_color) !important;
-        margin-bottom: 20px;
+        color: #C59D5F !important;
+        
         line-height: 1.6;
         border-radius: 12px;
-        
-        
     }
+    
     .cover__text h1{
         font-size: var(--text_heading_1);
         color: var(--text_primary_color);
@@ -1028,6 +1027,27 @@ textarea:focus {
 }
 
 
+
+
+/* --- Estilos Base para la Hamburguesa (No afectan Desktop) --- */
+.menu-toggle {
+    display: none; /* Oculto en PC */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #001540; /* Color azul de tu logo */
+    margin: 4px 0;
+    transition: 0.4s;
+}
+  
+
+/* --- Ajustes Responsivos (992px o menos) --- */
 @media (max-width: 992px) {
     .about-content {
         grid-template-columns: 1fr;
@@ -1038,4 +1058,54 @@ textarea:focus {
     .specialties-tags {
         justify-content: center;
     }
+    .features-centered{
+       margin: 10px auto;        
+    }
+    .container__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .menu-toggle {
+        display: flex; /* Aparece en móvil */
+    }
+
+    /* Modificamos tu clase .menu actual para que sea el desplegable */
+    .menu {
+        position: fixed;
+        left: 100%; /* Lo sacamos de la pantalla a la derecha */
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+        display: flex !important; /* Forzamos flex para el alineado */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+    }
+
+    /* Cuando se activa con JS */
+    .menu.active {
+        left: 0; /* Entra a la pantalla */
+    }
+
+    .menu nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .menu nav ul li {
+        margin: 20px 0;
+        font-size: 20px;
+    }
+
+    /* Animación de la X */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 }
+
